@@ -1,8 +1,8 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/dominik/.vim-good'
-let g:netrw_dirhist_2='/Users/dominik/working/propheris/documas-core'
+let g:netrw_dirhist_1='/Users/dominik/working/propheris/nhc'
+let g:netrw_dirhist_2='/Users/dominik/working/propheris/recruitment-requests'
 let g:netrw_dirhist_3='/Users/dominik/working/propheris/icl'
 let g:netrw_dirhist_4='/Users/dominik/working/propheris/documas-core'
-let g:netrw_dirhist_5='/Users/dominik/working/propheris'
+let g:netrw_dirhist_5='/Users/dominik/working/propheris/jobs'
 let g:netrw_dirhist_6='/Users/dominik/working/propheris/documas-core'
