@@ -535,3 +535,8 @@ set shellpipe=>
 " Escape remapping
 inoremap jk <esc>
 inoremap <esc> <nop>
+
+" Resize working window
+nnoremap <silent> <Leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
