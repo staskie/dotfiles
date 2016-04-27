@@ -539,6 +539,10 @@ set shellpipe=>
 inoremap jk <esc>
 inoremap <esc> <nop>
 
+" Resize working window
+nnoremap <silent> <Leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
 " Turn off creating netrw files
 let g:netrw_dirhistmax = 0
 
