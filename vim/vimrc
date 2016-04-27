@@ -133,6 +133,9 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+let g:tmux_navigator_no_mappings = 1
+
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
 " Can't be bothered to understand ESC vs <c-c> in insert mode
@@ -481,7 +484,7 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " command. See usage below.
 function! SelectaCommand(choice_command, selecta_args, vim_command)
   try
-    silent let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
   catch /Vim:Interrupt/
     " Swallow the ^C so that the redraw below happens; otherwise there will be
     " leftovers from selecta on the screen
@@ -550,7 +553,7 @@ nmap <leader>rr :call RunWith("ruby")<cr>
 " Run Ack on highlihted text
 nnoremap <silent> <leader>a :set opfunc=<SID>AckMotion<CR>g@
 xnoremap <silent> <leader>a :<C-U>call <SID>AckMotion(visualmode())<CR>
- 
+
 function! s:CopyMotionForType(type)
     if a:type ==# 'v'
         silent execute "normal! `<" . a:type . "`>y"
@@ -558,7 +561,7 @@ function! s:CopyMotionForType(type)
         silent execute "normal! `[v`]y"
     endif
 endfunction
- 
+
 function! s:AckMotion(type) abort
     let reg_save = @@
  
@@ -569,3 +572,31 @@ function! s:AckMotion(type) abort
     let @@ = reg_save
 endfunction
 
+let g:tmux_navigator_no_mappings = 1
+
+" Do not show swap warning when reading an open file
+set shortmess+=A
+
+" copy to system clipboard
+set clipboard=unnamed
+
+" turn Rainbow parantheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" https://github.com/guns/vim-clojure-static
+syntax on
+filetype plugin indent on
+
+" RuboCop bindinj
+let g:vimrubocop_keymap = 0
+nmap <Leader>r :RuboCop<CR>
+
+" Show trailing whitepace and spaces before a tab:
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
+" Cycle through tabs with tab
+:nnoremap <TAB> gt
