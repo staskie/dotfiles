@@ -584,16 +584,6 @@ set shortmess+=A
 " copy to system clipboard
 set clipboard=unnamed
 
-" turn Rainbow parantheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-" https://github.com/guns/vim-clojure-static
-syntax on
-filetype plugin indent on
-
 " RuboCop bindinj
 let g:vimrubocop_keymap = 0
 nmap <Leader>r :RuboCop<CR>
