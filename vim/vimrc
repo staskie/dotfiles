@@ -496,7 +496,7 @@ function! SelectaCommand(choice_command, selecta_args, vim_command)
 endfunction
 
 function! SelectaFile(path)
-  call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
+  call SelectaCommand("find " . a:path . "/* -type f -not -path './vendor/*' -not -path './tmp/*' -not -path './log'", "", ":e")
 endfunction
 
 nnoremap <leader>f :call SelectaFile(".")<cr>
@@ -584,9 +584,9 @@ set shortmess+=A
 " copy to system clipboard
 set clipboard=unnamed
 
-" RuboCop bindinj
+" RuboCop bindin
 let g:vimrubocop_keymap = 0
-nmap <Leader>r :RuboCop<CR>
+nmap <leader>a :Ack<space>
 
 " Show trailing whitepace and spaces before a tab:
 :highlight ExtraWhitespace ctermbg=red guibg=red
