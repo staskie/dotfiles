@@ -89,7 +89,7 @@ augroup vimrcEx
     \ endif
 
   "for ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+  autocmd FileType ruby,haml,eruby,yaml,html,jsx,javascript,sass,cucumber set ai sw=2 sts=2 et
   autocmd FileType python set sw=4 sts=4 et
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass 
@@ -496,7 +496,7 @@ function! SelectaCommand(choice_command, selecta_args, vim_command)
 endfunction
 
 function! SelectaFile(path)
-  call SelectaCommand("find " . a:path . "/* -type f -not -path './vendor/*' -not -path './tmp/*' -not -path './log'", "", ":e")
+  call SelectaCommand("find " . a:path . "/* -type f -not -path './vendor/*' -not -path './node_modules/*' -not -path './tmp/*' -not -path './log'", "", ":e")
 endfunction
 
 nnoremap <leader>f :call SelectaFile(".")<cr>
@@ -547,12 +547,12 @@ nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 let g:netrw_dirhistmax = 0
 
 " Run current ruby file
-function RunWith (command)
+function Run_With (command)
   execute "w"
   execute "!" . a:command . " " . expand("%")
 endfunction
 
-nmap <leader>rr :call RunWith("ruby")<cr>
+nmap <leader>rr :call Run_With("ruby")<cr>
 
 " Run Ack on highlihted text
 nnoremap <silent> <leader>a :set opfunc=<SID>AckMotion<CR>g@
@@ -594,3 +594,21 @@ nmap <leader>a :Ack<space>
 
 " Cycle through tabs with tab
 :nnoremap <TAB> gt
+
+" JSX highlight support in js files
+let g:jsx_ext_required = 0
+
+" ESLint check
+let g:syntastic_javascript_checkers = ['eslint']
+
+" Cycle through tabs and buffers
+" alt-k
+"map Ż :bnext<CR>
+" alt-j
+"map ∆ :bprev<CR>
+" alt-l
+map ł :bnext<CR>
+" alt-k
+map ķ :bprev<CR>
+" alt-q
+map Ō :b#<bar>bd#<CR>
