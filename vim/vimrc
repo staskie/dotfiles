@@ -586,7 +586,7 @@ set clipboard=unnamed
 
 " RuboCop bindin
 let g:vimrubocop_keymap = 0
-nmap <leader>a :Ack<space>
+nmap <leader>s :Ack<space>
 
 " Show trailing whitepace and spaces before a tab:
 :highlight ExtraWhitespace ctermbg=red guibg=red
@@ -612,3 +612,4 @@ map ł :bnext<CR>
 map ķ :bprev<CR>
 " alt-q
 map Ō :b#<bar>bd#<CR>
+set relativenumber
