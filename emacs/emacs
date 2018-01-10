@@ -322,3 +322,6 @@ is not used."
 
 (require 'powerline)
 (powerline-default-theme)
+
+;; disable auto save
+(setq auto-save-default nil) ; stop creating #autosave# files
