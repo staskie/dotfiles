@@ -82,7 +82,7 @@
     "nn" 'air-narrow-dwim       ;; Narrow to region and enter normal mode
     "nw" 'widen
     "o"  'delete-other-windows  ;; C-w o
-    "p"  'helm-show-kill-ring
+    "p"  'prettier-js
     "s"  'ag-project            ;; Ag search from project's root
     "r"  'rename-file
     "R"  (lambda () (interactive) (font-lock-fontify-buffer) (redraw-display))
@@ -327,5 +327,11 @@ is not used."
 (setq auto-save-default nil) ; stop creating #autosave# files
 
 (require 'prettier-js)
-(add-hook 'js2-mode-hook 'prettier-js-mode)
-(add-hook 'web-mode-hook 'prettier-js-mode)
+;; set indent to 2
+(require 'js2-mode)
+;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-jsx-mode))
+
+;; Better imenu
+;;(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
